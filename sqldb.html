@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<script src="jquery-1.11.3.min.js"></script>
+<script src="dbUtility.js"></script>
+ <script src="User.js"></script>
+<body>
+
+
+
+</body>
+<script>
+$(function(){
+	 userDAO.createTable("User")
+	 var user = new Object() ; 
+	 user.id = 1;
+	 user.name="jack";
+	 user.age=20;
+	 userDAO.insertUser(user,function(rs){ console.log( rs.insertId) ;return rs.insertId})
+	 
+	 userDAO.queryUser(1,function(rsUser){ 
+		console.log(rsUser);
+	})
+	
+	 userDAO.queryUsers(function(userArray){ 
+		for(i=0; userArray.length>i;i++ ){
+			var user = userArray[i] ;
+			console.log(user.ID+","+user.name);
+		}
+	})
+})
+
+  
+  
+  
+</script>
+</html>
